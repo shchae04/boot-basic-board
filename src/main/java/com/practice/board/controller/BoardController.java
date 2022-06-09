@@ -24,13 +24,15 @@ public class BoardController {
 
 
    @PostMapping("/board/writepro")
-   public String boardWritePro(Board board) {
+   public String boardWritePro(Board board, Model model) {
 
        System.out.println("제목 :" + board.getTitle());
        System.out.println("내용 :" + board.getContent());
 
+       model.addAttribute("message","글 작성이 완료되었습니다");
+       model.addAttribute("searchUrl","/board/list");
        boardService.write(board);
-        return "";
+        return "message";
    }
 
    @GetMapping("/board/list")
@@ -72,6 +74,8 @@ public class BoardController {
         //수정할때 넘어온 데이터
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
+
+        boardService.write(boardTemp);
        System.out.println(board.getTitle());
 
         return "redirect:/board/list";
