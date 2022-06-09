@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BoardController {
@@ -73,6 +72,7 @@ public class BoardController {
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
        System.out.println(board.getTitle());
+        boardService.write(boardTemp);
 
         return "redirect:/board/list";
    }
