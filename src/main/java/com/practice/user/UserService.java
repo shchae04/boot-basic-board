@@ -1,4 +1,4 @@
-package com.practice.board.service;
+package com.practice.user;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
