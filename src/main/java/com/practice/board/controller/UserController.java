@@ -1,4 +1,4 @@
-package com.practice.user;
+package com.practice.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ public class UserController {
 
     @GetMapping("/user/join")
     public String userPage(){
-        return "userJoin";
+        return "/userJoin";
     }
 
     @PostMapping("/register")

@@ -1,4 +1,4 @@
-package com.practice.user;
+package com.practice.board.entity;
 
 import lombok.Data;
 import lombok.Setter;
