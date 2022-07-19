@@ -35,6 +35,7 @@ public class BoardService {
         board.setFilepath("/files/"+fileName);
 
         boardRepository.save(board);
+        boardRepository.findById(3);
     };
 
     //게시글 리스트 처리

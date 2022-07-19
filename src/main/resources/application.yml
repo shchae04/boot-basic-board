@@ -1,12 +1,12 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/study
-    username: admin_sh
-    password: admin_sh
-    platform: postgres
 #  datasource:
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    username: c##study
-#    url: jdbc:oracle:thin:@localhost:1521/xe
-#    password: study
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/study
+#    username: admin_sh
+#    password: admin_sh
+#    platform: postgres
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: c##study
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    password: study

@@ -15,6 +15,11 @@ public class UserService {
     //회원가입 처리
     public void register(User user){
 
+
+        //userid,username,pw
+        System.out.println("userid: " + user.getUserid());
+        System.out.println("username: " + user.getUsername());
+        System.out.println("userpw: " + user.getUserpw());
         //스프링 시큐리티로 암호화 처리해야함.
         userRepository.save(user);
 
