@@ -14,6 +14,9 @@ public class UserService {
     private UserRepository userRepository;
     //회원가입 처리
     public void register(User user){
+        System.out.println("userid" + user.getUserid());
+        System.out.println("userpw" + user.getUserpw());
+        System.out.println("username" + user.getUsername());
 
 
         //userid,username,pw
