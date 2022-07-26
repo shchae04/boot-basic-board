@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -26,6 +28,10 @@ public class UserService {
         //스프링 시큐리티로 암호화 처리해야함.
         userRepository.save(user);
 
+    }
+
+    public List<User> getList(){
+       return userRepository.findAll();
     }
 
 }

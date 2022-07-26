@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    form > p {
+        text-align: center;
+        text-decoration: underline;
+        color: red;
+    }
+
+    .logBtn {
+        color: red;
+        background: black;
+    }
+
+</style>
 <body>
 
     <form action="/user/login" method="post">
@@ -14,8 +28,7 @@
                placeholder="WRITE PW"
                max="10">
         <br>
-        <button type="submit" style="margin-top: 20px">로그인</button>
-
+        <button class="logBtn" type="submit" style="margin-top: 20px">로그인</button>
     </form>
 
 
