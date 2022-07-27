@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -34,6 +36,10 @@ public class UserService {
 
         userRepository.save(user);
 
+    }
+
+    public List<User> getList(){
+       return userRepository.findAll();
     }
 
 }
