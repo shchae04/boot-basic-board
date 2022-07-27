@@ -3,6 +3,7 @@ package com.practice.board.service;
 import com.practice.board.entity.User;
 import com.practice.board.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -24,6 +25,13 @@ public class UserService {
         System.out.println("username: " + user.getUsername());
         System.out.println("userpw: " + user.getUserpw());
         //스프링 시큐리티로 암호화 처리해야함.
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        String newPw = encoder.encode(user.getUserpw());
+
+        user.setUserpw(newPw);
+
         userRepository.save(user);
 
     }
