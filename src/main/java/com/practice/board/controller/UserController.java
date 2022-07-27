@@ -43,5 +43,4 @@ public class UserController {
         String aar = (String)session.getAttribute("login");
     }
 
-
 }

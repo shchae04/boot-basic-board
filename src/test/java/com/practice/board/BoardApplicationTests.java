@@ -21,7 +21,7 @@ class BoardApplicationTests {
 			board.setContent("테스트" + i);
 			board.setTitle("테스트" + i);
 			board.setId(i);
-			boardService.write(board);
+
 		}
 
 	}
