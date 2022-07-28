@@ -30,6 +30,13 @@ public class MemberService {
         System.out.println("username: " + user.getUsername());
         System.out.println("암호화된 userpw: " + user.getUserpw());
         //스프링 시큐리티로 암호화 처리해야함.
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        String newPw = encoder.encode(user.getUserpw());
+
+        user.setUserpw(newPw);
+
         userRepository.save(user);
 
     }
