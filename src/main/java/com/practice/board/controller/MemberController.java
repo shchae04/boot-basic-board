@@ -1,8 +1,7 @@
 package com.practice.board.controller;
 
-import com.practice.board.entity.User;
-import com.practice.board.service.UserService;
-import org.hibernate.Session;
+import com.practice.board.entity.Member;
+import com.practice.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class UserController {
+public class MemberController {
 
     @Autowired
-    private UserService userService;
+    private MemberService userService;
 
     @GetMapping("/user/join")
     public String userPage(){
@@ -23,10 +22,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void register(User user, Model model){
-        System.out.println("user정보 : " + user);
+    public void register(Member user, Model model){
         System.out.println("user 회원가입 요청");
-        // user 정보를 암호화 해야함 security 사용.
+
         userService.register(user);
     }
 

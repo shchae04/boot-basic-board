@@ -28,11 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();		//로그인 창 disable()처리 하면 됩니다.
     }
 
-    /**
-     * 로그인 인증 처리 메소드
-     * @param auth
-     * @throws Exception
-     */
 
     @Override
     public void configure(WebSecurity web) throws Exception {
