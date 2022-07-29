@@ -2,6 +2,7 @@ package com.practice.board.controller;
 
 import com.practice.board.entity.Board;
 import com.practice.board.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,22 +13,36 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
-    @Autowired
-    private BoardService boardService;
+    /** RESTFul
+     * /write Post
+     * /list Get
+     * /update PostAsa92988
+     * /delete Post
+     * /info/{} Get
+     */
 
-    @GetMapping("/board/write") //localhost:8080/board/write 설정
+
+    private final BoardService boardService;
+
+    public BoardController(BoardService boardService){
+        this.boardService = boardService;
+    }
+
+    @GetMapping("/write")
    public String BoardWriteForm() {
 
        return "boardWrite";
    }
 
 
-   @PostMapping("/board/writepro")
+   @PostMapping("/write")
    public String boardWritePro(Board board, Model model, MultipartFile file) throws Exception {
 
        System.out.println("제목 :" + board.getTitle());
@@ -39,7 +54,7 @@ public class BoardController {
         return "message";
    }
 
-   @GetMapping("/board/list")
+   @GetMapping("/list")
    public String boardList(Model model,
                            @PageableDefault(page = 0,size = 10,sort = "id",direction = Sort.Direction.DESC) Pageable pageable,
                             String searchKeyword){
@@ -63,21 +78,21 @@ public class BoardController {
         return "boardList";
    }
 
-   @GetMapping("/board/view") //localhost:8080/board/view?id=1
+   @GetMapping("/view") //localhost:8080/board/view?id=1
     public String boardView(Model model,int id) {
 
         model.addAttribute("board",boardService.boardView(id));
         return "boardView";
    }
 
-   @GetMapping("/board/delete")
+   @GetMapping("/delete")
     public String boardDelete(Integer id){
         boardService.boardDelete(id);
 
         return "redirect:/board/list";
    }
 
-   @GetMapping("/board/modify/{id}")
+   @GetMapping("/modify/{id}")
     public String boardModify(@PathVariable("id") Integer id,Model model) {
 
         model.addAttribute("board",boardService.boardView(id));
@@ -85,7 +100,7 @@ public class BoardController {
         return "boardModify";
    }
 
-   @PostMapping("/board/update/{id}")
+   @PostMapping("/update/{id}")
     public String boardUpdate(@PathVariable("id") Integer id,Board board, MultipartFile file) throws Exception{
 
         //기존글
@@ -95,8 +110,6 @@ public class BoardController {
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
 
-        boardService.write(boardTemp,file);
-       System.out.println(board.getTitle());
         boardService.write(boardTemp,file);
 
         return "redirect:/board/list";

@@ -1,7 +1,6 @@
 package com.practice.board.entity;
 
 import lombok.Data;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "userprofile")
 @Entity
 @Data
-public class User {
+public class Member {
 
     @Id
     @GeneratedValue(generator = "user_generator")
