@@ -2,6 +2,7 @@ package com.practice.board.controller;
 
 import com.practice.board.entity.Board;
 import com.practice.board.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,17 +28,21 @@ public class BoardController {
      * /info/{} Get
      */
 
-    @Autowired
-    private BoardService boardService;
 
-    @GetMapping("/write") //localhost:8080/board/write 설정
+    private final BoardService boardService;
+
+    public BoardController(BoardService boardService){
+        this.boardService = boardService;
+    }
+
+    @GetMapping("/write")
    public String BoardWriteForm() {
 
        return "boardWrite";
    }
 
 
-   @PostMapping("/writepro")
+   @PostMapping("/write")
    public String boardWritePro(Board board, Model model, MultipartFile file) throws Exception {
 
        System.out.println("제목 :" + board.getTitle());

@@ -1,44 +1,44 @@
 package com.practice.board.controller;
 
+
 import com.practice.board.entity.Member;
 import com.practice.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user")
 public class MemberController {
 
-    @Autowired
-    private MemberService userService;
 
-    @GetMapping("/user/join")
-    public String userPage(){
-        return "userJoin";
-    }
+    /**
+     * Constructor based Injection -> Autowired 사용하지 않음.
+     */
+    private final MemberService memberService;
 
-    @PostMapping("/register")
-    public void register(Member user, Model model){
-        System.out.println("user 회원가입 요청");
-
-        userService.register(user);
-    }
-
-    //login access 처리
-    @GetMapping("user/login")
-    public String login() {
-
-        return "login";
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
     }
 
     @PostMapping("/login")
-    public void makesession(HttpSession session){
-        session.setAttribute("login","login_user");
-        String aar = (String)session.getAttribute("login");
+    public String login(Member member){
+        return "userList";
     }
+
+    @GetMapping("/list")
+    public String List(){
+
+        return "userList";
+    }
+
+
+
+
+    //spring security 기본 제공화면. 있어서 login.. -> ambiguous mapping error
+
 
 }

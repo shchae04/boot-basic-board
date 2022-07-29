@@ -2,6 +2,7 @@ package com.practice.board.service;
 
 import com.practice.board.entity.Member;
 import com.practice.board.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,8 @@ import java.util.List;
 public class MemberService {
 
 
-    @Autowired
-    private MemberRepository userRepository;
+
+    private MemberRepository memberRepository;
     //회원가입 처리
     public void register(Member user){
         System.out.println("userid" + user.getUserid());
@@ -37,12 +38,12 @@ public class MemberService {
 
         user.setUserpw(newPw);
 
-        userRepository.save(user);
+        memberRepository.save(user);
 
     }
 
     public List<Member> getList(){
-       return userRepository.findAll();
+       return memberRepository.findAll();
     }
 
 }
