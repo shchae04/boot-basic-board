@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             <tr th:each="user : ${list}">
-                <td th:text="${user.userid}">유저이름</td>  <!-- localhost:8080/board/view?id=board.id-->
+                <td th:text="${user.userid}">유저이름</td>
                 <td th:text="${user.userpw}">비밀번호</td>
             </tr>
             </tbody>
