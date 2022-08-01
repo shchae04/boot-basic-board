@@ -34,6 +34,9 @@ public class MemberService {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+        //스프링 시큐리티 적용을 위해서 새로운 프로젝트를 생성한다.
+        //프로젝트를 생성후 board와 user를 통합해서 -> board - user 사이트를 생성한다. 완전하게 ...
+
         String newPw = encoder.encode(user.getUserpw());
 
         user.setUserpw(newPw);
