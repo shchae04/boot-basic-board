@@ -2,6 +2,8 @@ package com.practice.board.service;
 
 import com.practice.board.entity.Board;
 import com.practice.board.repository.BoardRepository;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,10 +15,10 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
 
-    @Autowired
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
 
     //글 작성
     public void write(Board board, MultipartFile file) throws Exception{

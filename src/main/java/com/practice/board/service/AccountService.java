@@ -2,7 +2,6 @@ package com.practice.board.service;
 
 import com.practice.board.entity.Account;
 import com.practice.board.repository.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,4 +36,5 @@ public class AccountService implements UserDetailsService {
         account.encodePassword(account.passwordEncoder());
         return repository.save(account);
     }
+
 }
